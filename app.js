@@ -1,14 +1,32 @@
 const express = require("express")
 const app = express()
 
+app.set('view engine','ejs')
+
 app.get('/',(req,res)=>{
-    res.send("This is test page")
+    const data = ['cfcbirgung','cfckoshi']
+    res.render('home.ejs',{name : data})
+})
+-
+app.get("/blog",(req,res)=>{
+    res.render('blog')
+})
+
+app.get("/register",(req,res)=>{
+    res.render('authentication/register')
+})
+
+app.get("/login",(req,res)=>{
+    res.render('authentication/login')
 })
 
 
 
-app.listen(4000,()=>{
-    console.log("Project has started at port 3000")
+
+
+const PORT = 3000
+app.listen(PORT,()=>{
+    console.log("Project has started at port" + PORT)
 })
 
 

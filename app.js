@@ -1,6 +1,7 @@
 const express = require("express")
 const app = express()
 
+require('./model/index')
 app.set('view engine','ejs')
 
 app.get('/',(req,res)=>{
@@ -31,4 +32,12 @@ app.listen(PORT,()=>{
 
 
 
+
+function add(){
+    console.log(1+2)
+}
+
+ 
+class Test{
+}
 

@@ -1,8 +1,12 @@
 const express = require("express")
+const { blogs } = require("./model/index")
 const app = express()
+
+
 
 require('./model/index')
 app.set('view engine','ejs')
+app.use(express.urlencoded({extended : true}))
 
 app.get('/',(req,res)=>{
     const data = ['cfcbirgung','cfckoshi']
@@ -21,6 +25,20 @@ app.get("/login",(req,res)=>{
     res.render('authentication/login')
 })
 
+
+app.get("/createblog",(req,res)=>{
+    res.render("blog/createBlog")
+})
+
+app.post("/createblog",async (req,res)=>{
+    const {title,subtitle,description} = req.body 
+   await blogs.create({
+        title : title,
+        subtitle : subtitle , 
+        description : description
+    })
+    res.send("Blog created successfully")
+})
 
 
 

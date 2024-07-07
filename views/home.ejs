@@ -3,9 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #333;
+            padding: 10px 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: inline-block;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+        }
+
+        .navbar .brand {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        p {
+            text-align: center;
+            color: #666;
+        }
+
+        .items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+
+        .item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 200px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .item img {
+            width: 100%;
+            height: auto;
+        }
+
+        .item-title {
+            padding: 10px;
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
+
+    <%- include("./navbar.ejs") %>
+
+    <div class="container">
+        <h1>Welcome to Sangeet Neupane</h1>
+        <p>This is the home page. Navigate using the menu above.</p>
+    </div>
+
+    <div class="items">
+      <%  blogs.forEach((blog)=>{ %>
+            <div class="item">
+                <img src="<%- blog.image %>" alt="Item 1">
+                <div class="item-title"><%- blog.title %></div>
+                <a href="/blog/<%- blog.id %>">See more</a>
+            </div>
     
+       <% }) %>
+
+    </div>
+
+    <div class="footer">
+        &copy; 2024 Code for Change Birgunj. All rights reserved.
+    </div>
+
 </body>
 </html>
